@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .fade-enter-active, .fade-leave-active {
+          transition: opacity .5s
+        }
+        .fade-enter, .fade-leave-to /* .fade-leave-active in below version 2.1.8 */ {
+          opacity: 0
+        }
+    </style>
+</head>
+<body>
+    <div id="app-7">
+      <div v-html="rawHtml" id="aa"><span>cccc</span></div>
+      <div v-bind:id="dynamicId"></div>
+      <button v-bind:disabled="isButtonDisabled">Button</button>
+      <div v-bind:id="'list-' + uid"></div>
+      <a v-on:click="doSomething">点我</a>
+      
+      <br><input name="firstName" v-model="firstName">{{ firstName }}
+      <br><input name="lastName" v-model="lastName">{{ lastName }}
+      <br>{{ fullName }}
+      <div class="static"
+         v-bind:class="udeclass">
+    </div>
+      <ol>
+        <todo-itemaa
+          v-for="item in groceryList"
+          v-bind:todo="item"
+          v-bind:key="item.id">
+        </todo-itemaa>
+      </ol>
+    </div>
+    
+    <div id="example">
+      <my-component></my-component>
+      
+      <button v-on:click="show = !show">
+        Toggle
+      </button>
+      <transition name="fade">
+        <p v-if="show">hello</p>
+      </transition>
+    </div>
+    
+    <script src="js/vue.js"></script>
+    <script>
+        
+        Vue.component('todo-itemaa', {
+          props: ['todo'],
+          template: '<li>{{ todo.text }}</li>'
+        })
+        var app7 = new Vue({
+          el: '#app-7',
+          data: {
+            groceryList: [
+              { id: 0, text: '蔬菜' },
+              { id: 1, text: '奶酪' },
+              { id: 2, text: '随便其他什么人吃的东西' }
+            ],
+            aa:'ccc',
+            rawHtml: '<div>adfwefe4</div>',
+            dynamicId: 'abcd',
+            isButtonDisabled: 0,
+            uid: 'cccd',
+            firstName: 'zhang',
+            lastName: 'san',
+            //fullName: 'zhang san'
+            udeclass: {
+                aaa: true,
+                mmm: true
+            },
+          },
+          methods: {
+              doSomething:function(){
+                  alert(JSON.stringify(arguments));
+              }
+          },
+          watch: {
+
+          },
+          computed: {
+           fullName: {
+            // getter
+            get: function () {
+              return this.firstName + ' ' + this.lastName
+            },
+            // setter
+            set: function (newValue) {
+              var names = newValue.split(' ')
+              this.firstName = names[0]
+              this.lastName = names[names.length - 1]
+            }
+          }
+          }
+        });
+        
+        app7.$watch('aa',function(n,o){
+            //alert('new:'+JSON.stringify(n)+'//old:'+JSON.stringify(o));
+        });
+        app7.groceryList[0].text = "csdfsdf";
+        app7.aa = 'bbb';
+        app7.fullName = 'John Doe';
+        
+        new Vue({
+          el: '#example',
+          data: {
+            show: true
+          }
+        })
+        
+
+    </script>
+</body>
+</html>

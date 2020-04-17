@@ -1,0 +1,5 @@
+版本4.1.0.rc2
+常用：echarts.common.min.js
+精简：echarts.simple.min.js
+完整：echarts.min.js
+源代码：echarts.js

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html style="width:100%;height:100%;">
+<head>
+    <title>测试test.html</title>
+    <meta charset="UTF-8">
+    <link href="css/test2.css" type="text/css" rel="stylesheet" />
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.qrcode.min.js"></script>
+    <script src="js/udebasejs.js"></script>
+    <script src="js/test2.js"></script>
+	<!--<script src="js/sort.js"></script>-->
+</head>
+<body>
+
+    <!--CSS test2.css 太极图 -->
+    <div class="taiji"></div>
+
+    <!--CSS test2.css 空心圆柱体 -->
+    <div class="bottleouter">
+        <div class="bottle">
+            <div class="bottle_top">
+                <div class="bottle_mouth"></div>
+                <div class="highlight"></div>
+            </div>
+        </div>
+    </div>
+
+    <!--CSS test2.css 对话框样式小三角 -->
+    <div id="demo" ><span></span></div>
+
+    <!--CSS test2.css 背景渐变 -->
+    <div class="bgcss"></div>
+
+    <!--CSS test2.css 六角星 -->
+    <div class="sixhorns"></div>
+
+    <!--CSS test2.css 六角星2 -->
+    <div class="sixhorns2"></div>
+
+    <!--HTML svg格式icon引用 -->
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <circle cx="100" cy="50" r="40" stroke="black"
+                stroke-width="2" fill="#666"/>
+    </svg>
+	
+	<!--HTML svg格式 -->
+	<div style="display:inline-block;width:100px;height:100px;">
+		<svg viewBox="0 0 100 100">
+			<defs>
+				<linearGradient x1="0%" y1="0%" x2="100%" y2="0%">
+					<stop offset="0%" style="stop-color: rgb(255, 255, 0); stop-opacity: 1;"></stop> 
+					<stop offset="100%" style="stop-color: rgb(255, 0, 0); stop-opacity: 1;"></stop>
+				</linearGradient>
+			</defs>
+			<path d="M 50,50 m 0,-47 a 47,47 0 1 1 0,94 a 47,47 0 1 1 0,-94" stroke="#eaeef2" stroke-width="5" fill-opacity="0"></path>
+			<path d="M 50,50 m 0,-47 a 47,47 0 1 1 0,94 a 47,47 0 1 1 0,-94" stroke-linecap="round" stroke="#ff5500" 
+			stroke-width="6" fill-opacity="0" 
+			style="stroke-dasharray: 295.31px, 295.31px; stroke-dashoffset: 191.951px; transition: stroke-dashoffset 0.6s ease 0s, stroke 0.6s ease;"></path>
+		</svg>
+	</div>
+
+    <!--CSS test2.css 背景渐变 动态变化 -->
+    <div class="bgchange-bar"></div>
+
+    <!--CSS 圣杯布局 -->
+    <div style="width:500px; height:30px;">
+        <div id="left" style="width:30px; height:30px; float:left; background:#cecece;"></div>
+        <div id="right" style="width:30px; height:30px; float:right; background:#0d6aad;"></div>
+        <div id="center">
+            <div class="mian" style="margin:0 40px 0 40px; height:30px;background:#30d0c1"></div>
+        </div>
+    </div>
+
+    <!--HTML progress标签，HTML5支持 -->
+    <div>
+        <progress value="20" max="100">20%</progress>
+    </div>
+
+    <!--HTML 插入标签 -->
+    <embed src="image/key0.svg" type="image/svg+xml" />
+
+    <!--HTML 自定义服务器字体 -->
+    <style type="text/css">
+        @font-face{
+            font-family:fangzh;
+            src:local("Goudy Stout"),url("assets/FZSTK.TTF") format("TrueType");
+        }
+    </style>
+    <div style="font-family:fangzh;font-size:30px;">服务器字体:this is ...</div>
+
+    <!--JS test2.js 查找两个dom节点的最近共同父节点 -->
+    <div id="findP">
+        <div id="findP_c1">
+            <p></p>
+        </div>
+        <div id="findP_c2">
+            <div id="findP_c3"></div>
+            <span></span>
+        </div>
+    </div>
+
+    <!--JS test2.js 利用jquery过滤htmle空格 -->
+	<div id="ssgege"><label>wodeshijie</label>&nbsp;&nbsp;&nbsp;&nbsp;<label>456</label></div>
+
+
+
+    <!--html 天气预报 -->
+	<iframe allowtransparency="true" frameborder="0" width="257" height="100" scrolling="no"
+	 src="http://tianqi.2345.com/plugin/widget/index.htm?s=1&z=1&t=1&v=0&d=1&bd=1&k=0080ff&f=000000&q=1&e=1&a=1&c=54511&w=257&h=100&align=center"></iframe>
+
+
+    <!--百度分享-->
+    <br /><br />
+    <button class="bds_more" data-cmd="more">自定义分享按钮</button>
+    <div class="bdsharebuttonbox" data-tag="share_1">
+        <a class="bds_mshare" data-cmd="mshare"></a>
+        <a class="bds_qzone" data-cmd="qzone" href="#"></a>
+        <a class="bds_tsina" data-cmd="tsina"></a>
+        <a class="bds_baidu" data-cmd="baidu"></a>
+        <a class="bds_renren" data-cmd="renren"></a>
+        <a class="bds_tqq" data-cmd="tqq"></a>
+        <a class="bds_more" data-cmd="more">更多</a>
+        <a class="bds_count" data-cmd="count"></a>
+    </div>
+    <script>
+
+        window._bd_share_config = {
+            "common": {
+                "bdSnsKey": {
+                    "tsina": "1470502809"
+                },
+                "bdText": "哈哈哈哈哈哈",
+                "bdMini": "2",
+                "bdMiniList": false,
+                "bdPic": "",
+                "bdStyle": "1",
+                "bdUrl":"http://www.baidu.com",
+                "bdSize": "24"
+            },
+            "share":{},
+            "slide": {
+                "type": "slide",
+                "bdImg": "2",
+                "bdPos": "right",
+                "bdTop": "100"
+            },
+            "selectShare":{
+                "bdContainerClass":null,
+                "bdSelectMiniList":["weixin","tsina","qzone","tqq","renren"]
+            }
+        };
+        with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+
+	</script>
+
+    <!--html canvas标签 绘图 -->
+    <canvas id="mc" width="300" height="180" style="border:1px solid black;"></canvas>
+    <script>
+        var canvas = document.getElementById("mc");
+        var ctx = canvas.getContext("2d");
+        ctx.fillStyle = "#f00";
+        //ctx.arc(10,8,5,1,5,true);
+        //ctx.fillRect(0,0,80,80);
+        ctx.fillRect(30,20,120,60);
+        ctx.fillStyle = "#ff0";
+        ctx.fillRect(80,60,120,60);
+        ctx.strokeStyle = "#00f";
+        ctx.lineWidth = "10";
+        ctx.strokeRect(30,130,120,60);
+
+        ctx.fillStyle = "#00f";
+        ctx.font = "italic 50px 隶书";
+        ctx.textBaseline = "top";
+        ctx.fillText("canvas绘制",0 ,0);
+    </script>
+
+    <!--html 字体滚动 -->
+    <br/><br/>
+    <marquee hehavior="scroll" width="200px">我在跑，你抓不住我~~</marquee>
+
+
+    <!--jquery生成二维码 -->
+    <br/><br/>
+    <div id="qrcodebutton">扫一扫，看看我写了什么
+        <div class="qrlogo" style="width: 30px;height: 30px;padding: 5px;background: white;position: relative;top: 90px;left: 55px;">
+            <img src="image/factory.png" style="width:100%;height:100%;" />
+        </div>
+    </div>
+    <script>
+        function toUtf8(str) {
+            var out, i, len, c;
+            out = "";
+            len = str.length;
+            for(i = 0; i < len; i++) {
+                c = str.charCodeAt(i);
+                if ((c >= 0x0001) && (c <= 0x007F)) {
+                    out += str.charAt(i);
+                } else if (c > 0x07FF) {
+                    out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));
+                    out += String.fromCharCode(0x80 | ((c >>  6) & 0x3F));
+                    out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));
+                } else {
+                    out += String.fromCharCode(0xC0 | ((c >>  6) & 0x1F));
+                    out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));
+                }
+            }
+            return out;
+        }
+        var str ="哈哈，笨蛋。";
+        str = toUtf8(str);
+        console.log(str);
+
+        $("#qrcodebutton").qrcode( {
+            render: "table",//设置渲染方式
+            width: 150,
+            height:150,
+            typeNumber: -1,      //计算模式
+            //correctLevel: QRErrorCorrectLevel.H,//纠错等级
+            //background: "green",//背景颜色
+            //foreground: "red", //前景颜色
+            text: str
+        } );
+    </script>
+
+    <!----上下文菜单----->
+    <div style="position: relative">
+        <div id="contentdiv" style="border:1px solid #ccc;width:400px;">右键点我显示右键菜单</div>
+        <ul id="myMenu" style="position:fixed;visibility:hidden;background-color:silver;">
+            <li>hh</li>
+            <li>ssshh</li>
+        </ul>
+    </div>
+    <script>
+        EventUtil.addHandler(window,"load",function(event){
+            var div = document.getElementById("contentdiv");
+            EventUtil.addHandler(div,"contextmenu",function(event){
+                event = EventUtil.getEvent(event);
+                EventUtil.preventDefault(event);
+                var menu = document.getElementById("myMenu");
+                menu.style.left = (document.body.scrollLeft||0) + event.clientX + "px";
+                menu.style.top = (document.body.scrollTop||0) + event.clientY + "px";
+                menu.style.visibility = "visible";
+            });
+            EventUtil.addHandler(document,"click",function(event){
+                document.getElementById("myMenu").style.visibility = "hidden";
+            });
+        });
+    </script>
+
+    <!--HTML 可编辑的段落 -->
+    <div style="width:200px;height:200px;border:1px solid #ccc;"  contenteditable></div>
+
+
+</body>
+</html>

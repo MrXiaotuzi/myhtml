@@ -1,0 +1,136 @@
+﻿<html>
+<head>
+    <title>测试ip</title>
+</head>
+<body>
+	<div>
+		输入ip段如“130.255.1.1-130.255.1.255，计算ip/mask形式
+	</div>
+	<input type="text" id="ipInput" />
+	<button id="testBtn">计算</button>
+
+	<br>
+	<label>结果：</label><label id="reslabel"></label>
+
+</body>
+<script>
+
+	var ipInput = document.getElementById('ipInput');
+	var testBtn = document.getElementById('testBtn');
+	var reslabel = document.getElementById('reslabel');
+	
+	testBtn.addEventListener('click', function(){
+		var res = transformip(ipInput.value);
+		reslabel.innerHTML = res.ip + '/' + res.mask;
+	});
+
+	
+	function transformip(ip) {
+		let ipArr = ip.split('-');
+
+		if (ipArr.length == 1) {
+			// 不包含-
+			return {ip: ip, mask: '32'};
+		}
+		if (ipArr.length != 2) {
+			// 错误的格式
+			return {ip: '0.0.0.0', mask: '0'};
+		}
+		if (ipArr[0] == ipArr[1]) {
+			// 相同的ip
+			return {ip: ip, mask: '32'};
+		}
+
+
+
+		// 开始的ip的二进制，32位
+		let startIp32 = ipArr[0].split('.').map(a => {
+			a = (+a).toString(2);
+			a = '00000000' + a;
+			return a.slice(-8);
+		}).join('').split('');
+		// 结束的ip的二进制，32位
+		let endIp32 = ipArr[1].split('.').map(a => {
+			a = (+a).toString(2);
+			a = '00000000' + a;
+			return a.slice(-8);
+		}).join('').split('');
+
+		let sameIp = '';
+		for (let i = 0; i < 32; i++) {
+			// 获取相同的部分，从第一位开始
+			if (startIp32[i] == endIp32[i]) {
+				sameIp += startIp32[i];
+			} else {
+				break;
+			}
+		}
+		// 掩码为相同部分的个数
+		let mask = sameIp.length;
+		// 补全后面的0
+		for (let i = 0; i < 32 - mask; i++) {
+			sameIp += '0';
+		}
+		let resIp = [sameIp.slice(0, 8), sameIp.slice(8, 16), sameIp.slice(16, 24), sameIp.slice(24, 32)];
+		resIp = resIp.map(a => parseInt(a, 2)).join('.');
+		return {
+			ip: resIp,
+			mask: mask,
+		};
+
+
+		let srcipArr = ipArr[0].split('.');
+		let aNum = Math.abs(iptonum(ipArr[1]) - iptonum(ipArr[0]));
+		let masklen = 32 - aNum.toString(2).length;
+		let amask = '11111111111111111111111111111111';
+		let bmask = amask.slice(0, masklen);
+		for (let i = 0; i < aNum.toString(2).length; i++) {
+			bmask += '0';
+		}
+		let maskArr = this.splitmask(bmask);
+		let rtipArr = maskArr.map((v, i)=>{
+			let ipnum = 0;
+			if (srcipArr[i]) {
+				ipnum = v & srcipArr[i];
+			}
+			return ipnum;
+		});
+
+		return {
+			ip: rtipArr.join('.'),
+			mask: masklen
+		};
+	}
+	
+	function iptonum (ip) {
+		let aNum = ip.split(".");
+		if (aNum.length != 4) {
+			return 0;
+		}
+
+		let num = 0;
+		num += parseInt(aNum[0] << 24);
+		num += parseInt(aNum[1] << 16);
+		num += parseInt(aNum[2] << 8);
+		num += parseInt(aNum[3] << 0);
+		num = num >>> 0;
+		return num;
+	}
+	
+	function splitmask(mask) {
+		let arr = [];
+		let len = mask.length / 8;
+		for (let i = 0; i < len; i++) {
+			let substr = mask.substr(0, 8);
+			arr.push(substr);
+			mask = mask.slice(8);
+			// mask = mask.replace(substr, '');
+		}
+		arr = arr.map(v=>{
+			return parseInt(v, 2);
+		});
+		return arr;
+	}
+
+</script>
+</html>

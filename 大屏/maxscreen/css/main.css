@@ -1,0 +1,302 @@
+/* 基础样式 */
+* {padding: 0;margin: 0;}
+html,body {width: 100%;height: 100%;}
+ul li {list-style: none;}
+
+/* 默认滚动条样式 */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    border: 1px #d3d3d3 solid;
+    box-shadow: 0px 0px 3px #dfdfdf inset;
+    border-radius: 5px;
+    background: #eee;
+}
+::-webkit-scrollbar-thumb {
+    border: 1px #808080 solid;
+    border-radius: 5px;
+    background: #999;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #7d7d7d;
+}
+
+/* 公用样式 */
+.fl {float: left}
+.fr {float: right}
+.clear:after {display: block;width: 0;height: 0;clear: both;content: '';}
+
+
+body {
+    height: 1080px;
+    width: 1920px;
+}
+.main {
+    background: url('../img/bg.jpg') no-repeat center center;
+    background-size: 100% auto;
+    height: 1080px;
+    width: 1920px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.main .header {
+    height: 45px;
+    line-height: 45px;
+    background: rgba(4,163,255,.15);
+    color: #fff;
+    text-align: center;
+    padding: 0 10px;
+    font-size: 14px;
+}
+.main .header marquee {
+    display: inline-block;
+    width: 600px;
+    position: relative;
+    left: -50px;
+    font-size: 16px;
+}
+
+.main .container {
+    width: 100%;
+    height: 740px;
+    margin-top: 30px;
+    position: relative;
+    box-sizing: border-box;
+}
+.main .container .block{
+    position: absolute;
+    background: rgba(0, 0, 0, 0.15);
+}
+.main .container .block:before,
+.main .container .block:after,
+.main .container .block .corner-bl,
+.main .container .block .corner-br {
+    display: block;
+    content: '';
+    width: 6px;
+    height: 6px;
+    position: absolute;
+    border: 1px solid #0c77c6;
+}
+.main .container .block:before {
+    border-bottom: none;
+    border-right: none;
+    top: -1px;
+    left: -1px;
+}
+.main .container .block:after {
+    border-bottom: none;
+    border-left: none;
+    top: -1px;
+    right: -1px;
+}
+.main .container .block .corner-bl {
+    border-top: none;
+    border-right: none;
+    bottom: -1px;
+    left: -1px;
+}
+.main .container .block .corner-br {
+    border-top: none;
+    border-left: none;
+    bottom: -1px;
+    right: -1px;
+}
+.main .container .block.block-center {
+    background: transparent;
+}
+.main .container .block.block-center:before,
+.main .container .block.block-center:after {
+    display: none;
+}
+
+.main .container .block .canvas {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+/* 图例样式 demo1 */
+.demo1 .info{
+    position: absolute;
+    top: 80px;
+    left: 250px;
+}
+.demo1 .info div label{
+    display: inline-block;
+    color: #beb8d1;
+    width: 140px;
+}
+.demo1 .info >div {
+    margin-top: 5px;
+    font-size: 12px;
+}
+.demo1 .info >div span{
+    display: inline-block;
+    width: 30px;
+    height: 16px;
+    border-radius: 2px;
+    background: #fff;
+    color: #333;
+    text-align: center;
+    line-height: 16px;
+}
+
+
+
+/* 图例样式 demo2 */
+.demo2 {
+    color: #fff;
+}
+.demo2 .title {
+    padding: 0 30px;
+}
+.demo2 .title .text{
+    font-size: 14px;
+    width: 90px;
+    height: 40px;
+    line-height: 40px;
+}
+.demo2 .title .line{
+    width: 650px;
+    height: 1px;
+    border-bottom: #0dadfa dashed 1px;
+    position: relative;
+    top:19px;
+}
+.demo2 .title .line:before,
+.demo2 .title .line:after{
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border: 3px solid #06acfa;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    position: absolute;
+    top: -2px;
+}
+.demo2 .title .line:before{
+    left: -12px;
+    transform: rotate(45deg);
+}
+.demo2 .title .line:after{
+    right: -12px;
+    transform: rotate(-135deg);
+}
+.demo2 .body{
+    height: 190px;
+    width: 100%;
+    position: relative;
+    top: -10px;
+}
+.demo2 .body .devTopoNumber{
+    height: 195px;
+    width: 29%;
+    display: inline-block;
+}
+
+
+.demo2 .body .devTopoPie{
+    height: 195px;
+    width: 70%;
+    display: inline-block;
+}
+.demo2 .body .devTopoPie #online,
+.demo2 .body .devTopoPie #outline,
+.demo2 .body .devTopoPie #unkown{
+    width:33%;
+    height: 95%;
+    float: left;
+}
+
+
+/* 图例样式 demo7 */
+.demo7 .data-radar:after {
+    content: ' ';
+    display: block;
+    background-image: linear-gradient(44deg, rgba(0, 255, 51, 0) 5%, rgba(8, 91, 152, 0.8) 100%);
+    width: 160px;
+    height: 160px;
+    border-top: 3px solid #0D9859;
+    position: absolute;
+    top: 11.5%;
+    left: 5%;
+    animation: radar-beam 4s infinite;
+    animation-timing-function: linear;
+    transform-origin: bottom right;
+    border-radius: 100% 0 0 0;
+}
+@keyframes radar-beam {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.demo7 .radar-circle {
+    position: absolute;
+    top: 163px;
+    left: 140px;
+    z-index: 999;
+    width: 94px;
+    height: 94px;
+    border-radius: 50%;
+    background-color: #30ade5;
+    text-align: center;
+    line-height: 92px;
+    font-size: 48px;
+    color: #fff;
+}
+.demo7 .point {
+    position: absolute;
+}
+.demo7 #axis-radar {
+    position: absolute;
+    top: 0;
+}
+.demo7 .radar-legend {
+    position: absolute;
+    top: 25%;
+    left: 72%;
+    width: 136px;
+}
+
+.demo7 .radar-legend li {
+    height: 24px;
+    margin: 5px 0;
+}
+.demo7 .warning {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+    display: inline-block;
+    background: url(../img/icon.png) 0 0 no-repeat;
+    vertical-align: middle;
+}
+.demo7 .warning-1 {
+    background-position: 0 0;
+}
+.demo7 .warning-2 {
+    background-position: 0 -18px;
+}
+.demo7 .warning-3 {
+    background-position: 0 -36px;
+}
+.demo7 .legend-name {
+    font-size: 12px;
+    color: #fff;
+}
+.demo7 .radar-point {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    left: 210px;
+    top: 100px;
+}

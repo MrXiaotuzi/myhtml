@@ -1,0 +1,230 @@
+body {
+    padding: 20px 50px;
+}
+/*默认滚动条样式*/
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    border: 1px #d3d3d3 solid;
+    box-shadow: 0px 0px 3px #dfdfdf inset;
+    border-radius: 5px;
+    background: #eee;
+}
+::-webkit-scrollbar-thumb {
+    border: 1px #808080 solid;
+    border-radius: 5px;
+    background: #999;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #7d7d7d;
+}
+
+/* 太极图 */
+.taiji{
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    margin: 10px;
+    border: 1px solid #000;
+    border-radius: 100%;
+    background: linear-gradient(left , black 50%, #fff 50%);
+    background: -o-linear-gradient(left , black 50%, #fff 50%);
+    background: -ms-linear-gradient(left , black 50%, #fff 50%);
+    background: -moz-linear-gradient(left , black 50%, #fff 50%);
+    background: -webkit-linear-gradient(left , black 50%, #fff 50%);
+}
+.taiji:before{
+    display:block;
+    content:"";
+    height: 20px;
+    width: 20px;
+    border: 15px solid black;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 100%;
+}
+.taiji:after{
+    display:block;
+    content:"";
+    height: 20px;
+    width: 20px;
+    border: 15px solid #fff;
+    margin: 0 auto;
+    background: black;
+    border-radius: 100%;
+}
+
+/* 空心圆柱体 */
+.bottleouter{display: inline-block;margin: 10px;width: 150px;height: 80px;}
+.bottle{width:100px; position:relative;background-color: black;padding: 20px;}
+.bottle_top{position:relative; width:80px; height:30px; border:1px solid rgba(255,255,255,0.5);border-bottom:0 none; border-top:0 none; margin:0 auto;}
+.bottle_top:after,.bottle_top:before{content:''; display:block; height:10px; width:78px; border-radius:46px/10px; border:2px solid rgba(255,255,255,.5);border-bottom:2px solid rgba(255,255,255,.4);border-top:1px solid rgba(255,255,255,.6); position:absolute; left:-1px;box-shadow:0px 0px 6px rgba(255,255,255,0.6) inset;}
+.bottle_top:after{top:-6px;box-shadow:0px 0px 6px rgba(255,255,255,0.6) inset,0px 3px 3px -1px rgba(255,255,255,0.3);}
+.bottle_top:before{top:24px;box-shadow:0px 0px 6px rgba(255,255,255,.4) inset;}
+.bottle_mouth{height:52px; width:44px; margin:0 auto; position:relative; background:none; border:1px solid rgba(0,0,0,0.04);border-top:none; border-bottom:none;background:-moz-linear-gradient(left,rgba(255,255,255,0.3),rgba(255,255,255,0) 5%,rgba(255,255,255,0) 95%,rgba(255,255,255,0.3)); box-shadow:0px 0px 6px rgba(255,255,255,0.3);}
+.bottle_mouth:after{height:6px; width:44px; content:''; display:block; border-radius:25px/6px;border:1px solid rgba(255,255,255,.4); position:absolute; left:-1px; top:-4px;z-index:1; box-shadow:0px 0px 3px rgba(255,255,255,0.3);}
+.bottle_top .highlight{width:20px; height:30px; display:block; position:absolute; left:5px; top:5px; -moz-transform:skew(0deg,5deg);background:-moz-linear-gradient(left,rgba(255,255,255,0.1),rgba(255,255,255,0.6) 4%,rgba(255,255,255,0.2) 98%,rgba(255,255,255,0));}
+.bottle_top .highlight:after{content:''; display:block; width:2px; height:30px; position:absolute; top:-1px; left:-3px; -moz-transform:skew(0deg,5deg); background:rgba(255,255,255,.3);}
+
+/* 对话框样式小三角 */
+#demo {
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    display: inline-block;
+    margin: 10px;
+    border: 2px solid #000;
+    background-color: #FFF;
+}
+#demo::before,
+#demo::after {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: 100%;
+    display: block;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-right-width: 0;
+}
+#demo::before {
+    border-left-color: #000;
+    margin-left: 2px;
+}
+#demo::after {
+    border-left-color: #FFF;
+}
+
+/* 背景渐变 */
+.bgcss {
+    width:50px;height:50px;display: inline-block;margin: 10px;
+    background: radial-gradient(center , circle cover , rgb(194, 218, 23) 4% , rgb(56, 152, 237) 19% , rgb(0, 0, 0) 36% , rgb(232, 86, 37) 67% , rgb(255, 255, 255) 78% , rgb(179, 48, 124) 96%);
+    background: -o-radial-gradient(center , circle cover , rgb(194, 218, 23) 4% , rgb(56, 152, 237) 19% , rgb(0, 0, 0) 36% , rgb(232, 86, 37) 67% , rgb(255, 255, 255) 78% , rgb(179, 48, 124) 96%);
+    background: -ms-radial-gradient(center , circle cover , rgb(194, 218, 23) 4% , rgb(56, 152, 237) 19% , rgb(0, 0, 0) 36% , rgb(232, 86, 37) 67% , rgb(255, 255, 255) 78% , rgb(179, 48, 124) 96%);
+    background: -moz-radial-gradient(center , circle cover , rgb(194, 218, 23) 4% , rgb(56, 152, 237) 19% , rgb(0, 0, 0) 36% , rgb(232, 86, 37) 67% , rgb(255, 255, 255) 78% , rgb(179, 48, 124) 96%);
+    background: -webkit-radial-gradient(center , circle cover , rgb(194, 218, 23) 4% , rgb(56, 152, 237) 19% , rgb(0, 0, 0) 36% , rgb(232, 86, 37) 67% , rgb(255, 255, 255) 78% , rgb(179, 48, 124) 96%);
+}
+
+/* 六角星 */
+.sixhorns{
+    width:112px;
+    height:112px;
+    display: inline-block;margin: 10px;
+    background-color:#fff;
+    margin-left:18px;
+    border-radius:100%;
+    border:5px solid #666;
+}
+.sixhorns:before,.sixhorns:after{
+    width:0px;
+    height:0px;
+    display:block;
+    border:50px solid transparent;
+    content:'';
+    position:relative;
+    border-bottom:85px solid #666;
+    border-top-width:0px;
+    top:0px;
+    left:5px;
+}
+.sixhorns:after{
+    border-top:85px solid #666;
+    border-bottom-width:0px;
+    top:-58px;
+    left:5px;
+}
+.sixhorns2{
+    width: 50px;
+    height: 50px;
+    display: inline-block;margin: 10px;
+    background-color: #fff;
+    margin: 50px;
+    border-radius: 100%;
+    border: 2px solid #666;
+    box-shadow: 0px 0px 0px 20px transparent inset;
+    position: relative;
+}
+.sixhorns2:before,.sixhorns2:after{
+    width: 0px;
+    height: 0px;
+    display: block;
+    border: 50px solid transparent;
+    content: '';
+    position: relative;
+    z-index: -9;
+    border-bottom: 85px solid #666;
+    border-top-width: 0px;
+    top: -33px;
+    left: -25px;
+}
+.sixhorns2:after{
+    border-top: 85px solid #666;
+    border-bottom-width: 0px;
+    top: -87px;
+    left: -25px;
+}
+
+
+/* 背景渐变 边线动态 */
+.bgchange-bar {
+    background: #FFFFFF;
+    height: 4px;
+    margin: 10px 0;
+    border-radius: 5px;
+    animation: bgchange 1s ease-in-out 0s infinite alternate;
+    /* Firefox: */
+    -moz-animation: bgchange 1s ease-in-out 0s infinite alternate;
+    /* Safari 和 Chrome: */
+    -webkit-animation: bgchange 1s ease-in-out -2s infinite alternate;
+    /* Opera: */
+    -o-animation: bgchange 1s ease-in-out 0s infinite alternate;
+}
+@keyframes bgchange {
+    0% {
+        background: -moz-linear-gradient(left, red, #f96, yellow, green, #ace);
+        background: -webkit-linear-gradient(left, red, #f96, yellow, green, #ace);
+        background: -o-linear-gradient(left, red, #f96, yellow, green, #ace);
+        background: linear-gradient(left, red, #f96, yellow, green, #ace);
+    }
+    25% {
+        background: -moz-linear-gradient(left, #ace, red, #f96, yellow, green);
+        background: -webkit-linear-gradient(left, #ace, red, #f96, yellow, green);
+        background: -o-linear-gradient(left, #ace, red, #f96, yellow, green);
+        background: linear-gradient(left, #ace, red, #f96, yellow, green);
+    }
+    50% {
+        background: -moz-linear-gradient(left, green, #ace, red, #f96, yellow);
+        background: -webkit-linear-gradient(left, green, #ace, red, #f96, yellow);
+        background: -o-linear-gradient(left, green, #ace, red, #f96, yellow);
+        background: linear-gradient(left, green, #ace, red, #f96, yellow);
+    }
+    75% {
+        background: -moz-linear-gradient(left, yellow, green, #ace, red, #f96);
+        background: -webkit-linear-gradient(left, yellow, green, #ace, red, #f96);
+        background: -o-linear-gradient(left, yellow, green, #ace, red, #f96);
+        background: linear-gradient(left, yellow, green, #ace, red, #f96);
+    }
+    100% {
+        background: -moz-linear-gradient(left, #f96, yellow, green, #ace, red);
+        background: -webkit-linear-gradient(left, #f96, yellow, green, #ace, red);
+        background: -o-linear-gradient(left, #f96, yellow, green, #ace, red);
+        background: linear-gradient(left, #f96, yellow, green, #ace, red);
+    }
+}
+
+
+/* 进度条 */
+progress {
+    width: 160px;
+    border: 1px solid #0064B4;
+    background-color:#e6e6e6;
+    color: #0064B4; /*IE10*/
+}
+progress::-moz-progress-bar { background: #0064B4; }
+progress::-webkit-progress-bar { background: #e6e6e6; }
+progress::-webkit-progress-value  { background: #0064B4; }
+

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>表格</title>
+    <link type="text/css" rel="stylesheet" href="dataTable/media/css/jquery.dataTables.min.css">
+    <!--<link type="text/css" rel="stylesheet" href="ColReorder-1.4.1/css/colReorder.semanticui.css">-->
+
+    <script src="jquery-1.11.3.min.js"></script>
+    <script src="dataTable/media/js/jquery.dataTables.min.js"></script>
+    <script src="colResizable/colResizable-1.6.js"></script>
+    <!--<script src="ColReorder-1.4.1/js/dataTables.colReorder.min.js"></script>-->
+
+    <style>
+        table {
+            border-right: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+        }
+        th,td {
+            border-top: 1px solid #ccc;
+            border-left: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div style="width: 1200px;height: 500px;border: 1px solid #efefef;padding: 10px;overflow: auto">
+        <table id="table1" class="display" >
+        </table>
+    </div>
+    <div style="margin-top: 20px">
+        <button onclick="addColum()">添加一行</button>
+		<button onclick="initDataTable()">刷新</button>
+    </div>
+
+<script>
+debugger;
+    var aoColumns = [
+		{
+			mData: 'i1',
+			sClass: 'multiple-choice',
+			bSortable: false,
+			sWidth:"30px",
+			sTitle: '<label class="imitate-checkbox th-checkbox"><input type="checkbox"/><span></span></label>',
+			mRender: function (data, type, row, meta) {
+				return '<label class="imitate-checkbox td-checkbox"><input type="checkbox" '+(data  ? 'checked' : '' )+'/><span></span></label>';
+			}
+			
+		},
+        {mData: 'i1', sTitle: '标题1',width: 200},
+        {mData: 'i2', sTitle: '标题2',width: 300},
+        {mData: 'i3', sTitle: '标题3',width: 300},
+        {mData: 'i4', sTitle: '标题4',width: 300},
+        {mData: 'i5', sTitle: '标题5',width: 300},
+    ];
+
+    function createData() {
+        var res = [];
+        for (var i = 0; i < 500; i++) {
+            res.push({
+                i1: '内容'+i+'--1'+(Math.random()*100),
+                i2: '内容'+i+'--2'+(Math.random()*100),
+                i3: '内容'+i+'--3'+(Math.random()*100),
+                i4: '内容'+i+'--4'+(Math.random()*100),
+                i5: '内容'+i+'--5'+(Math.random()*100)
+            });
+        }
+        return  res;
+    }
+	
+	var myTable = null;
+    function initDataTable() {
+	var aaData = createData();
+		console.log(new Date().getTime());
+        if (myTable) {
+            myTable.destroy();
+            $("#table1").empty();
+            $("#table1").replaceWith($("#table1").clone());
+        }
+        myTable = $("#table1").DataTable({
+            //colReorder: true,
+            aoColumns: aoColumns,
+            aaData: aaData,
+            "language": {
+                "emptyTable": "暂无数据"
+            },
+            lengthChange: true,
+            pageLength: 5000,
+            scrollY: 300,
+            scrollX: true,
+            //autoWidth: true,
+            searching: false,
+        });
+		console.log(new Date().getTime());
+        initResize();
+    }
+
+    function initResize() {
+        // 表格id：table1
+        var relation = null;
+        if ($("#table1_wrapper table").length > 1) {
+            relation = $("#table1_wrapper table").eq(1);
+        }
+
+        $("#table1_wrapper table").eq(0).colResizable({
+            liveDrag:true,
+            //gripInnerHtml:"<div class='grip'></div>",
+            draggingClass:"dragging",
+            resizeMode:'overflow',
+            reload:true, // 每次初始化强制先销毁对象
+            relation: relation, // 关联的table
+        });
+
+    }
+
+    function addColum() {
+        var l = aoColumns.length + 1;
+        aoColumns.push({
+            mData: 'i'+l,
+            sTitle: '标题'+l
+        });
+        aaData.forEach(function(item,index){
+            item['i'+l] = '内容'+(index+1)+'-'+l;
+        });
+
+        initDataTable();
+    }
+	
+	
+	initDataTable();
+
+</script>
+</body>
+</html>

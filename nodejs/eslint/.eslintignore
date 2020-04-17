@@ -1,0 +1,6 @@
+project/.build
+framework
+build
+dist
+node_modules
+nodejs

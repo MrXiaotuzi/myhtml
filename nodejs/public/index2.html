@@ -1,0 +1,31 @@
+﻿<html>
+<head>
+    <title>socket测试</title>
+</head>
+<body>
+
+<div style="height:400px;width:600px;border: 1px solid #ccc;">
+
+	<input id="mesgInput">
+	<button id="btn">发送</button>
+	<pre id="recivePre"></pre>
+	
+</div>
+</body>
+<script src="./jquery-1.11.1.min.js"></script>
+<script>
+	var ws = new WebSocket("http://127.0.0.1:3000");
+	ws.onopen = function() {
+		ws.send("发送数据");
+	};
+	
+	ws.onmessage = function (evt) {
+		var received_msg = evt.data;
+		$("#recivePre").append(JSON.stringify(received_msg) +'\n');
+	};
+	
+	ws.onclose = function() {
+		$("#recivePre").append('已关闭' +'\n');
+	};
+</script>
+</html>

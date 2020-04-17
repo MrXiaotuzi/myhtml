@@ -1,0 +1,71 @@
+1	in 判断对象是否拥有某个属性，包括继承的属性
+	hasOwnProperty 是否自身拥有某个属性
+	
+	for..in
+		适用范围：数组，对象
+		描述：    获取可枚举的实例和原型属性名
+		原型属性(√)，不可枚举属性(×)，Symbol属性(×)
+	Object.keys()
+		适用范围：数组，对象
+		描述：    返回可枚举的实例属性名组成的数组
+		原型属性(×)，不可枚举属性(×)，Symbol属性(×)
+	Object.getOwnPropertyNames()
+		适用范围：数组，对象   
+		描述：    返回除原型属性以外的所有属性（不含Symbol属性，包括不可枚举的属性）名组成的数组
+		原型属性(×)，不可枚举属性(√)，Symbol属性(×)
+	Object.getOwnPropertySymbols()
+		适用范围：数组，对象   
+		描述：    返回除原型属性以外的Symbol属性名组成的数组
+		原型属性(×)，不可枚举属性(√)，Symbol属性(√)
+	Reflect.ownKeys(obj)
+		适用范围：数组，对象   
+		描述：    返回一个数组，包含对象自身的所有属性，不管是属性名是Symbol或字符串，也不管是否可枚举
+		原型属性(×)，不可枚举属性(√)，Symbol属性(√)
+	for..of                    
+		适用范围：可迭代对象(Array, Map, Set, arguments等)
+		描述：    返回属性值
+		
+
+2	es6新属性 Map  和 Set
+
+3	解构赋值,如：
+	function({param1, param2}) {}
+	var [x, y, z] = ['hello', 'JavaScript', 'ES6'];
+
+4	generator  可以返回多次的函数
+
+5	JSON.stringify(xiaoming, ['name', 'aaa', 'ss', 'dd'], '');  // 参数（对象, 过滤的key, 空格类型）
+	toJSON  // 如果一个对象有toJSON方法，则使用stringify时会调用这个方法
+	JSON.parse() // 还可以接收一个函数，用来转换解析出的属性：
+  
+  
+6	dom操作 可以在dom节点上继续使用
+	getElementById()  
+	getElementsByTagName() 
+	getElementsByClassName() 
+	fristElementChild 
+	lastElementChild  
+	querySelector() // IE8+ ,ie8不完全支持
+	querySelectorAll() // IE8+ ,ie8不完全支持
+	innerHTML  
+	innerText // 标签字符串会转换为文本，避免XSS攻击,不返回隐藏元素的文本 
+	textContent // 标签字符串会转换为文本，避免XSS攻击，返回所有元素的文本 IE9+
+	appendChild()
+	creatElement()
+	setAttribute()
+	parentElement.insertBefore(newElement, referenceElement);
+	parentElement
+	parent.removeChild(self)
+	
+7	表单，HTML5新特性
+	<input type="date" value="2015-07-01">
+	<input type="datetime-local" value="2015-07-01T02:03:04">
+	<input type="color" value="#ff0000">
+	没有name属性的input不会提交form
+	HTML5提供的file api：  FileReader  和 file ，用于获取file选择的内容，常用于图片预览
+
+		
+8	跨域  CORS  Access-Control-Allow-Origin
+
+
+9   document.visibilityState 浏览器table标签隐藏和显示状态的监听

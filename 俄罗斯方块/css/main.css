@@ -1,0 +1,74 @@
+/* 布局 */
+.container {
+    width: 700px;
+    margin: 10px;
+    font-family: Microsoft Yahei;
+}
+.container:after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    clear: both;
+}
+.container .s-panel {
+    position: relative;
+    float: left;
+    border: 1px solid #ccc;
+    background-color: #dedede;
+}
+.container .o-panel {
+    position: relative;
+    float: left;
+    padding: 50px 20px;
+    border: 1px solid #ccc;
+    height: 380px;
+}
+.container .o-panel .score {
+    height: 40px;
+}
+.container .o-panel .oper {
+    height: 50%;
+    text-align: center;
+}
+.container .o-panel .oper  button{
+    display: block;
+    width: 100px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+/* tetris类 */
+.tetris {
+    margin: 0px;
+    padding: 0px;
+}
+.tetris:after,
+.tetris > li:after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    clear: both;
+}
+.tetris > li {
+    list-style: none;
+}
+.tetris > li > div {
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    width: 20px;
+    height: 20px;
+    float: left;
+    background-color: transparent;
+}
+.tetris > li > div.selected {
+    background-color: #39a5d8;
+}
+.tetris > li > div.oldblock {
+    background-color: #2fc15c;
+}
+
+/* 操作窗口 */

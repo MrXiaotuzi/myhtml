@@ -1,0 +1,30 @@
+.clock_body{
+    width:751px;
+    height:751px;
+    border:1px solid #ccc;
+    background:url(../image/clock_bg.png) no-repeat center center;
+    background-size: 100% 100%;
+}
+.clock_body [class^='clock_']{
+    position: absolute;
+    width: 31px;
+    height: 354px;
+    margin-left: 364px;
+    margin-top: 120px;
+    transform-origin: 50% 258px;
+    background: url(../image/clock_h.png) no-repeat center center;
+    background-size: 100% 100%;
+}
+.clock_body .clock_h{
+    background-image:url(../image/clock_h.png);
+}
+.clock_body .clock_m{
+    background-image:url(../image/clock_m.png);
+}
+.clock_body .clock_s{
+    background-image:url(../image/clock_s.png);
+}
+
+input[name^='time']{
+    width:50px;
+}

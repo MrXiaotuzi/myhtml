@@ -1,0 +1,55 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/css">
+         #p { width: 300px; height: 300px; padding: 10px;  border: 1px solid black; }
+         #c { width: 200px; height: 200px; border: 1px solid red; }
+         #sub { width: 100px; height: 100px; border: 1px solid red; }
+    </style>
+</head>
+<body>
+    <div id="p">
+        parent
+        <div id="c">sssoojoj</div>
+    </div>
+    <script type="text/javascript">
+ /**   
+			var p = document.getElementById('p');
+      p.onclick= function (e) {
+        alert('P节点捕获11');
+      }
+      
+      c.onclick= function (e) {
+        alert('C节点捕获11');
+        //e.stopPropagation();
+      }
+      c.onclick= function (e) {
+        alert('C节点冒泡');
+        e.stopPropagation();
+      }
+      p.onclick= function (e) {
+        alert('P节点冒泡')
+      }
+  **/
+      var p = document.getElementById('p');
+      p.addEventListener('click', function (e) {
+        alert('P节点捕获11');
+        //e.stopPropagation();
+      }, true);
+      p.addEventListener('click', function (e) {
+        alert('P节点捕获22');
+      }, true);
+      c.addEventListener('click', function (e) {
+        alert('C节点冒泡');
+      }, false);
+      c.addEventListener('click', function (e) {
+        alert('C节点捕获11');
+      }, true);
+      p.addEventListener('click', function (e) {
+        alert('P节点冒泡')
+      }, false);
+      
+    
+    </script>
+</body>
+</html>

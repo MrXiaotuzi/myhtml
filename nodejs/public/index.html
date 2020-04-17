@@ -1,0 +1,26 @@
+﻿<html>
+<head>
+    <title>socket测试</title>
+</head>
+<body>
+
+<div style="height:400px;width:600px;border: 1px solid #ccc;">
+
+	<input id="mesgInput">
+	<button id="btn">发送</button>
+	<pre id="recivePre"></pre>
+	
+</div>
+</body>
+<script src="./jquery-1.11.1.min.js"></script> 
+<script src="./socket.io.js"></script>
+<script>
+	var socket = io.connect('http://127.0.0.1:3000');
+	socket.on('receive_message',function(data){
+		$("#recivePre").append(JSON.stringify(data) +'\n');
+	});
+	$("#btn").click(function(){
+		socket.emit('message', $('#mesgInput').val());
+	});
+</script>
+</html>

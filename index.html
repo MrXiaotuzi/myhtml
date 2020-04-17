@@ -1,0 +1,167 @@
+﻿<html>
+<head>
+    <title>测试index.html</title>
+	<link href="Layer-3.0.3/skin/default/layer.css" rel="stylesheet" />
+    <style>
+
+    </style>
+</head>
+<body>
+
+	<input type="color" /><br />
+	
+	<label>Object.defineProperty实现双向绑定</label><input id="myInput1" /><input id="myInput2" /><span id="myInputShow1"></span><br />
+	<label>Proxy/Reflect实现双向绑定</label><input id="myInput3" /><input id="myInput4" /><span id="myInputShow2"></span><br />
+
+	<canvas id="canvas" style="border:1px solid #ccc;background:#ccc;" width="300" height="300"></canvas>
+</body>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/d3.v5.min.js"></script>
+
+<!-- https://files.cnblogs.com/files/liuzhou1/L2Dwidget.min.js -->
+<script src="js/L2Dwidget.min.js"></script>
+<!-- <script src="js/sort.js"></script>-->
+<script>
+
+	/**
+		双向绑定
+	*/
+	function handleChange(obj, showId) {
+		return function(e) {
+			console.log('输入变化', e.target.value);
+			obj.value = e.target.value;
+			
+			document.getElementById(showId).innerText = obj.value;
+		}
+	}
+	function handleSetInput(ids, val) {
+		ids.forEach(id => {
+			if (document.getElementById(id).value != val) {
+				document.getElementById(id).value = val;
+			}
+		});
+	}
+    // Object监听属性改变，vue双向绑定本质
+    var inputModule = {value: '', _value: ''};
+    Object.defineProperty(inputModule, "value", {
+		  get: function() {
+			return this._value;
+		  },
+          set: function(newValue){
+            console.log('监听到变化', newValue);
+			this._value = newValue;
+			handleSetInput(['myInput1', 'myInput2'], newValue);
+          },
+          enumerable : true,
+          configurable : true
+    });
+	document.getElementById('myInput1').addEventListener('input', handleChange(inputModule, 'myInputShow1'));
+	document.getElementById('myInput2').addEventListener('input', handleChange(inputModule, 'myInputShow1'));
+	
+	// Proxy/Reflect实现双向绑定
+	var inputModule2 = new Proxy({}, {
+		set: function(target, key, value, receiver) {
+			console.log('监听到变化', value);
+			handleSetInput(['myInput3', 'myInput4'], value);
+			return Reflect.set(target, key, value, receiver);
+		}
+	});
+	document.getElementById('myInput3').addEventListener('input', handleChange(inputModule2, 'myInputShow2'));
+	document.getElementById('myInput4').addEventListener('input', handleChange(inputModule2, 'myInputShow2'));
+	
+	
+
+	// canvas 剪切路径和叠加
+	//https://www.cnblogs.com/hzj680539/p/5068487.html
+	//http://www.w3school.com.cn/tags/canvas_globalcompositeoperation.asp
+	draw();
+	function draw() {
+	  var ctx = document.getElementById('canvas').getContext('2d');
+	  ctx.fillStyle = '#333';
+	  ctx.fillRect(0,0,200,200);
+	  ctx.translate(100,100);
+	  
+
+	  // Create a circular clipping path
+	  ctx.beginPath();
+	  ctx.arc(0,0,60,0,Math.PI*2,true);
+	  ctx.clip();
+	  
+
+	  // draw background
+	  var lingrad = ctx.createLinearGradient(0,-100,0,100);
+	  lingrad.addColorStop(0, '#161635');
+	  lingrad.addColorStop(1, '#143778');
+	  
+	  ctx.fillStyle = lingrad;
+	  //ctx.fillStyle = '#f0f';
+	  ctx.fillRect(-100,-100,200,200);
+
+	  // draw stars
+	  for (var j=1;j<50;j++){
+		ctx.save();
+		ctx.fillStyle = '#fff';
+		ctx.translate(100-Math.floor(Math.random()*200),
+					  100-Math.floor(Math.random()*200));
+		drawStar(ctx,Math.floor(Math.random()*4)+2);
+		ctx.restore();
+	  }
+	  
+	}
+	function drawStar(ctx,r){
+	  ctx.save();
+	  ctx.beginPath()
+	  ctx.moveTo(r,0);
+	  for (var i=0;i<9;i++){
+		ctx.rotate(Math.PI/5);
+		if(i%2 == 0) {
+		  ctx.lineTo((r/0.525731)*0.200811,0);
+		} else {
+		  ctx.lineTo(r,0);
+		}
+	  }
+	  ctx.closePath();
+	  ctx.fill();
+	  ctx.restore();
+	}
+	
+	
+	
+	/**
+    L2Dwidget.init({
+        "model": {
+            jsonPath: "https://unpkg.com/live2d-widget-model-shizuku/assets/shizuku.model.json",
+            "scale": 1
+        },
+        "display": {
+            "position": "right",
+            "width": 150,
+            "height": 300,
+            "hOffset": 0,
+            "vOffset": -20
+        },
+        "mobile": {
+            "show": true,
+            "scale": 0.5
+        },
+        "react": {
+            "opacityDefault": 0.7,
+            "opacityOnHover": 0.2
+        }
+    });
+	**/
+	
+	L2Dwidget.init({"display": {
+              "superSample": 2,
+              "width": 200,
+              "height": 400,
+              "position": "right",
+              "hOffset": 0,
+              "vOffset": 0
+          }
+      });
+	
+	
+	
+</script>
+</html>

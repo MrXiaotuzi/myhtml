@@ -1,0 +1,14 @@
+{
+  "name": "WebMaker",
+  "version": "0.0.1",
+  "description": "前端框架应用",
+  "repository": {},
+  "license": "MIT",
+  "devDependencies": {
+    "debug": "^3.2.6",
+    "eslint": "^5.15.1",
+    "eslint-loader": "^2.1.2",
+    "eslint-plugin-vue": "^5.2.2",
+	"babel-eslint": "^10.0.1"
+  }
+}

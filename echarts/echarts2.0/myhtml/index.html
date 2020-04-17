@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body style="height: 100%; margin: 0">
+        <div id="container" style="height: 300px;width:1190px;border:1px solid #ccc;"></div>
+        <script type="text/javascript" src="echarts-all.js"></script>
+        <script type="text/javascript">
+            var option = {
+                "title": {
+                    "text": "资产数量",
+                    "x": "20",
+                    "y": "20"
+                },
+                "tooltip": {
+                    "show": true,
+                    "trigger": "axis",
+                    //"backgroundColor": "rgba(227,227,227,.8)",
+                    //"textStyle": {
+                        //"color": "#333",
+                        //"fontSize": 14
+                    //},
+                    "showDelay": 0,
+                    hideDelay: 0
+                },
+                "color": ["#B8DF7A", "#F6AB5F", "#F28857", "#F4977B", "#BC8EBB", "#8681BC", "#8593C7", "#82A6D5", "#78CFF4", "#86C99C"],
+                "legend": {
+                    "data": ["主机", "主机2", "未知设备", "网络设备", "网络设备2", "负载均衡2", "防火墙", "防火墙2"],
+                    "show": true,
+                    "x": "right",
+                    "y": 10
+                },
+                "xAxis": [{
+                    "name": "日期",
+                    "type": "category",
+                    "axisLine": {
+                        "lineStyle": {
+                            "width": 1
+                        }
+                    },
+                    "splitLine": {
+                        "show": false
+                    },
+                    "boundaryGap": false,
+                    "data": ["2017-08", "2017-09", "2017-10", "2017-11", "2017-12", "2018-01", "2018-02", "2018-03", "2018-04", "2018-05", "2018-06", "2018-07"],
+                    "axisLabel": {
+                        "interval": 0,
+                        "rotate": -25
+                    }
+                }],
+                "yAxis": [{
+                    "name": "数量",
+                    "type": "value",
+                    "axisLine": {
+                        "lineStyle": {
+                            "width": 1
+                        }
+                    }
+                }],
+                "grid": {
+                    "x": 50,
+                    "y": 80,
+                    "x2": 60,
+                    "y2": 50
+                },
+                "series": [{
+                    "name": "主机",
+                    "type": "line",
+                    "smooth": true,
+                    "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "4232"]
+                },
+                {
+                    "name": "主机2",
+                    "type": "line",
+                    "smooth": true,
+                    "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                },
+                {
+                    "name": "未知设备",
+                    "type": "line",
+                    "smooth": true,
+                    "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "4079"]
+                },
+                {
+                    "name": "网络设备",
+                    "type": "line",
+                    "smooth": true,
+                    "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "4288"]
+                },
+                {
+                    "name": "网络设备2",
+                    "type": "line",
+                    "smooth": true,
+                    "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                },
+                {
+                    "name": "负载均衡2",
+                    "type": "line",
+                    "smooth": true,
+                    "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                },
+                {
+                    "name": "防火墙",
+                    "type": "line",
+                    "smooth": true,
+                    "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                },
+                {
+                    "name": "防火墙2",
+                    "type": "line",
+                    "smooth": true,
+                    "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                }]
+            };
+        </script>
+        <script type="text/javascript">
+            var dom = document.getElementById("container");
+            var myChart = echarts.init(dom);
+            myChart.setOption(option, true);
+       </script>
+   </body>
+</html>
